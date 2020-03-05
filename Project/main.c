@@ -45,7 +45,7 @@ struct redfs_args
 #define mainTIMER_TEST_PERIOD (50)
 
 void vAssertCalled(
-unsigned long ulLine, const char * const pcFileName 
+unsigned long ulLine, const char * const pcFileName
 )
 {
 		printf("error line: %lu in file: %s", ulLine, pcFileName);
@@ -117,7 +117,7 @@ int main(void)
 	Request *proxy_req = put_request(app->my_cfdp_id, NULL, NULL, ACKNOWLEDGED_MODE, app);
 	add_proxy_message_to_request(app->my_cfdp_id, 1, "FileFolder/pic.jpeg", "FileFolder/proxy.jpg", proxy_req);
 	start_request(proxy_req);
-	
+
 	/* Start the scheduler itself. */
 	vTaskStartScheduler();
 

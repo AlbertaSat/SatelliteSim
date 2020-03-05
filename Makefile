@@ -12,7 +12,7 @@ INCLUDES	+=		-I $(P_BASEDIR)/include
 INCLUDES	+=		-I $(P_BASEDIR)/core/include
 INCLUDES	+=		-I $(P_BASEDIR)/os/freertos/include
 INCLUDES	+=		-I $(P_PROJDIR)
-	
+
 include $(P_BASEDIR)/build/reliance.mk
 
 
@@ -133,10 +133,10 @@ ifneq ($(shell uname), Darwin)
 CFLAGS += -pthread
 endif
 
-# MAX_NUMBER_OF_TASKS = max pthreads used in the POSIX port. 
+# MAX_NUMBER_OF_TASKS = max pthreads used in the POSIX port.
 # Default value is 64 (_POSIX_THREAD_THREADS_MAX), the minimum number required by POSIX.
 CFLAGS += -DMAX_NUMBER_OF_TASKS=300
-CFLAGS += $(INCLUDES) $(CWARNS) -O2 
+CFLAGS += $(INCLUDES) $(CWARNS) -O2
 
 
 ######## Makefile targets ########
@@ -148,7 +148,7 @@ CFLAGS += $(INCLUDES) $(CWARNS) -O2
 all: setup
 	#$(MAKE) -C $(SRCROOT)/Project/FileTransfer/CCSDS_FileDeliveryProtocol/Program/src/ lib
 	$(MAKE) SatelliteSim
-	 
+
 .PHONY : setup
 setup:
 # Make obj directory

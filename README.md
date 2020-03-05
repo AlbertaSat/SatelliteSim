@@ -46,7 +46,7 @@ the entry point of SatelliteSim is in /Project/main.c
 # Adding new code
 
 I think the best way to add a new application is to make your app into a .a (archive) file. This is just
-a bundle of .o files. make an archive file with: 
+a bundle of .o files. make an archive file with:
     $ ar -rsc name_of_archive.a obj.o ob1.o ob2.o ...
 
 In the master makefile (the one in this directory) link your new .a file,
