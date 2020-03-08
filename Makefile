@@ -12,6 +12,7 @@ INCLUDES	+=		-I $(P_BASEDIR)/include
 INCLUDES	+=		-I $(P_BASEDIR)/core/include
 INCLUDES	+=		-I $(P_BASEDIR)/os/freertos/include
 INCLUDES	+=		-I $(P_PROJDIR)
+INCLUDES	+=		-I ~/satelliteSim/MyApp/include
 	
 include $(P_BASEDIR)/build/reliance.mk
 
@@ -74,8 +75,7 @@ C_FILES			+= QueueOverwrite.c
 C_FILES			+= TaskNotify.c
 C_FILES			+= TimerDemo.c
 
-# Main Object
-C_FILES			+= main.c
+# Main Object NEEDS TO BE IN PROJECT
 C_FILES			+= FileSystemTasks.c
 
 
@@ -90,6 +90,7 @@ INCLUDES		+= -I$(SRCROOT)/Project/FileTransfer/CCSDS_FileDeliveryProtocol/Progra
 
 # includeing .a fils
 STATIC_OBJS  	+= $(SRCROOT)/Project/FileTransfer/CCSDS_FileDeliveryProtocol/Program/src/file_delivery_app.a
+STATIC_OBJS 	+= ~/satelliteSim/MyApp/telecommands.a
 
 # Generate OBJS names
 OBJS = $(patsubst %.c,%.o,$(C_FILES))
@@ -99,7 +100,7 @@ OBJS = $(patsubst %.c,%.o,$(C_FILES))
 # Warnings
 CWARNS += -W
 CWARNS += -Wall
-CWARNS += -Werror
+# CWARNS += -Werror
 CWARNS += -Wextra
 CWARNS += -Wformat
 CWARNS += -Wmissing-braces
@@ -110,7 +111,7 @@ CWARNS += -Wno-sign-compare
 CWARNS += -Wswitch
 CWARNS += -Wuninitialized
 CWARNS += -Wunknown-pragmas
-CWARNS += -Wunused-function
+# CWARNS += -Wunused-function
 CWARNS += -Wunused-label
 CWARNS += -Wunused-parameter
 CWARNS += -Wunused-value

@@ -3819,7 +3819,7 @@ except:
 
 # /usr/lib/gcc/x86_64-linux-gnu/4.8/include/stdbool.h: 48
 try:
-    __bool_true_false_are_defined = 1
+    ___Boolrue_false_are_defined = 1
 except:
     pass
 
