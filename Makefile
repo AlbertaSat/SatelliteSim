@@ -1,19 +1,20 @@
 ######## Build files for FileSystem ########
-P_BASEDIR ?= $(CURDIR)/FileSystem/reliance-edge
-P_PROJDIR ?= $(CURDIR)/Project/FileSystem/freeRTOS
-B_DEBUG ?= 1
+# P_BASEDIR ?= $(CURDIR)/FileSystem/reliance-edge
+# P_PROJDIR ?= $(CURDIR)/Project/FileSystem/freeRTOS
+# B_DEBUG ?= 1
 
 #either freertos, linux, stub, u-boot, win32
 P_OS ?= freertos
 B_OBJEXT ?= o
 
+#
+# INCLUDES	+=		-I $(P_BASEDIR)/include
+# INCLUDES	+=		-I $(P_BASEDIR)/core/include
+# INCLUDES	+=		-I $(P_BASEDIR)/os/freertos/include
+# INCLUDES	+=		-I $(P_PROJDIR)
+# INCLUDES	+=		-I ~/satelliteSim/command_handling/Inc
 
-INCLUDES	+=		-I $(P_BASEDIR)/include
-INCLUDES	+=		-I $(P_BASEDIR)/core/include
-INCLUDES	+=		-I $(P_BASEDIR)/os/freertos/include
-INCLUDES	+=		-I $(P_PROJDIR)
-
-include $(P_BASEDIR)/build/reliance.mk
+# include $(P_BASEDIR)/build/reliance.mk
 
 
 
@@ -36,7 +37,7 @@ VPATH	        += $(SRCROOT)/Source/portable/MemMang
 VPATH	        += $(SRCROOT)/Source/portable/GCC/POSIX
 VPATH           += $(SRCROOT)/Demo
 VPATH			+= $(SRCROOT)/Project
-VPATH			+= $(SRCROOT)/Project/FileSystem
+# VPATH			+= $(SRCROOT)/Project/FileSystem
 
 # FreeRTOS Objects
 C_FILES			+= croutine.c
@@ -76,7 +77,7 @@ C_FILES			+= TimerDemo.c
 
 # Main Object
 C_FILES			+= main.c
-C_FILES			+= FileSystemTasks.c
+# C_FILES			+= FileSystemTasks.c
 
 
 # Include Paths
@@ -93,7 +94,8 @@ INCLUDE			+= -I$(SRCROOT)/libcsp/include
 INCLUDE 		+= -I$(SRCROOT)/libcsp/build/include
 
 # includeing .a fils
-STATIC_OBJS  	+= $(SRCROOT)/Project/FileTransfer/file_delivery_app.a
+# STATIC_OBJS  	+= $(SRCROOT)/Project/FileTransfer/file_delivery_app.a
+#STATIC_OBJS  	+= $(SRCROOT)/../command_handling/client_server.a
 STATIC_OBJS  	+= $(SRCROOT)/libcsp/build/libcsp.a
 
 
@@ -105,7 +107,7 @@ OBJS = $(patsubst %.c,%.o,$(C_FILES))
 # Warnings
 CWARNS += -W
 CWARNS += -Wall
-CWARNS += -Werror
+# CWARNS += -Werror
 CWARNS += -Wextra
 CWARNS += -Wformat
 CWARNS += -Wmissing-braces
@@ -125,12 +127,13 @@ CWARNS += -Wmissing-prototypes
 
 #CWARNS += -Wno-unused-function
 
-CFLAGS += -m32
+# CFLAGS += -m32
 CFLAGS += -DDEBUG=1
 #CFLAGS += -g -DUSE_STDIO=1 -D__GCC_POSIX__=1
 CFLAGS += -g -UUSE_STDIO -D__GCC_POSIX__=1
 ifneq ($(shell uname), Darwin)
 CFLAGS += -pthread
+CFLAGS += -lzmq
 endif
 
 # MAX_NUMBER_OF_TASKS = max pthreads used in the POSIX port.
