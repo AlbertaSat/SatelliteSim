@@ -93,9 +93,11 @@ INCLUDE 		+= -I$(SRCROOT)/libcsp/include/csp
 INCLUDE			+= -I$(SRCROOT)/libcsp/include
 INCLUDE 		+= -I$(SRCROOT)/libcsp/build/include
 
-# includeing .a fils
-# STATIC_OBJS  	+= $(SRCROOT)/Project/FileTransfer/file_delivery_app.a
-#STATIC_OBJS  	+= $(SRCROOT)/../command_handling/client_server.a
+# includeing .a files
+
+# PROJECT LIBRARY GOES HERE:
+STATIC_OBJS  	+= $(SRCROOT)/../command_handling/client_server.a
+
 STATIC_OBJS  	+= $(SRCROOT)/libcsp/build/libcsp.a
 
 
