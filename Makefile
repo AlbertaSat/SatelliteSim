@@ -76,7 +76,7 @@ C_FILES			+= TimerDemo.c
 
 # Main Object
 C_FILES			+= main.c
-C_FILES			+= FileSystemTasks.c
+#C_FILES			+= FileSystemTasks.c
 
 
 # Include Paths
@@ -84,7 +84,7 @@ INCLUDES        += -I$(SRCROOT)/Source/include
 INCLUDES        += -I$(SRCROOT)/Source/portable/GCC/POSIX/
 INCLUDES        += -I$(SRCROOT)/Demo/include
 INCLUDES        += -I$(SRCROOT)/Project
-INCLUDES		+= -I$(SRCROOT)/Project/FileSystem
+#INCLUDES		+= -I$(SRCROOT)/Project/FileSystem
 INCLUDES		+= -I$(SRCROOT)/Project/FileTransfer/CCSDS_FileDeliveryProtocol/Program/include
 
 
@@ -169,9 +169,9 @@ else
 endif
 
 # $(REDDRIVOBJ)
-SatelliteSim: $(_OBJS) $(REDDRIVOBJ) $(STATIC_OBJS)
-
+SatelliteSim: $(_OBJS) $(STATIC_OBJS)
 	@echo ">> Linking $@..."
+
 ifeq ($(verbose),1)
 	$(CC) $(CFLAGS) $^ $(LINKFLAGS) $(LIBS) -o $@
 else
