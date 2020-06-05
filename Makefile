@@ -96,7 +96,7 @@ INCLUDE 		+= -I$(SRCROOT)/libcsp/build/include
 # includeing .a files
 
 # PROJECT LIBRARY GOES HERE:
-STATIC_OBJS  	+= $(SRCROOT)/../command_handling/client_server.a
+STATIC_OBJS  	+= $(SRCROOT)/../ex2_command_handling_demo/client_server.a
 
 STATIC_OBJS  	+= $(SRCROOT)/libcsp/build/libcsp.a
 
@@ -174,7 +174,7 @@ else
 endif
 
 # $(REDDRIVOBJ)
-SatelliteSim: $(_OBJS) $(REDDRIVOBJ) $(STATIC_OBJS)
+SatelliteSim: $(_OBJS) $(REDDRIVOBJ) $(STATIC_OBJS) -lzmq
 
 	@echo ">> Linking $@..."
 ifeq ($(verbose),1)
