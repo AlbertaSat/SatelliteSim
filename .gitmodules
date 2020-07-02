@@ -1,6 +1,6 @@
 [submodule "libcsp"]
 	path = libcsp
-	url = https://github.com/libcsp/libcsp
+	url = https://github.com/AlbertaSat/libcsp.git
 
 
 
