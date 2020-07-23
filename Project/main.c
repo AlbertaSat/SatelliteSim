@@ -27,7 +27,7 @@
 #define mainTIMER_TEST_PERIOD (50)
 
 void vAssertCalled(
-unsigned long ulLine, const char * const pcFileName 
+unsigned long ulLine, const char * const pcFileName
 )
 {
 	printf("error line: %lu in file: %s", ulLine, pcFileName);
@@ -51,7 +51,6 @@ int main(void)
 		printf("couldn't start ftp\n");
     }
 
-	/* Start the scheduler itself. */
 	vTaskStartScheduler();
 
 	return 0;

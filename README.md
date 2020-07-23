@@ -24,12 +24,29 @@ $ make all
 If you just want to link the object files without rebuilding everything, run  
 $ make SatelliteSim
 
+# We need to install libcsp manually
 
+cd into libcsp and run
+./waf configure --with-os=posix
+
+then we need to change this line in build/c4che/_cache.py:
+CFLAGS = ['-Os', '-Wall', '-g', '-std=gnu99']
+
+to this:
+CFLAGS = ['-Os', '-Wall', '-g', '-std=gnu99', '-m32']
+
+then run ./waf build
+
+# To Run
+to run:
+./SatelliteSim
+
+the entry point of SatelliteSim is in /Project/main.c
 
 # Adding new code
 
 I think the best way to add a new application is to make your app into a .a (archive) file. This is just
-a bundle of .o files. make an archive file with: 
+a bundle of .o files. make an archive file with:
     $ ar -rsc name_of_archive.a obj.o ob1.o ob2.o ...
 
 In the master makefile (the one in this directory) link your new .a file,
