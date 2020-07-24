@@ -41,9 +41,9 @@ int main(void)
     uint8_t src_id = csp_get_address();
     if (src_id == 0) {
         printf("CSP ID: %d, initialzing csp addr 1\n", src_id);
-        csp_init(1);
-        csp_buffer_init(1000, 250);
-        csp_route_start_task(5000, 1);
+        csp_conf_t csp_conf;
+        csp_conf_get_defaults(&csp_conf);
+        csp_init(&csp_conf);
     }
 	
 	FTP *app = init_ftp(5);
