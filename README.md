@@ -29,13 +29,16 @@ $ make SatelliteSim
 cd into libcsp and run
 ./waf configure --with-os=posix
 
+
+If we want to build with reliance edge, we need to configure libcsp to 32bit mode
 then we need to change this line in build/c4che/_cache.py:
 CFLAGS = ['-Os', '-Wall', '-g', '-std=gnu99']
-
 to this:
 CFLAGS = ['-Os', '-Wall', '-g', '-std=gnu99', '-m32']
 
-then run ./waf build
+Currently, we are running without the -m32 flag, so please just run:
+
+./waf build
 
 # To Run
 to run:
