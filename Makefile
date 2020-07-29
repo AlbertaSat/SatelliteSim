@@ -76,13 +76,24 @@ C_FILES			+= main.c
 #C_FILES			+= FileSystemTasks.c
 
 
-# Include Paths
+#Free Rtos
 INCLUDES        += -I$(SRCROOT)/Source/include
 INCLUDES        += -I$(SRCROOT)/Source/portable/GCC/POSIX/
 #INCLUDES        += -I$(SRCROOT)/Demo/include
 INCLUDES        += -I$(SRCROOT)/Project
+
+#reliance edge
 INCLUDES		+= -I$(SRCROOT)/Project/FileSystem
+
+#File Transfer app
 INCLUDES		+= -I$(SRCROOT)/Project/FileTransfer/CCSDS_FileDeliveryProtocol/Program/include
+
+#Services app
+INCLUDES 		+= -I$(SRCROOT)/Project/ex2_services/
+INCLUDES 		+= -I$(SRCROOT)/Project/ex2_services/Platform/demo
+INCLUDES 		+= -I$(SRCROOT)/Project/ex2_services/Platform/demo/hal
+INCLUDES 		+= -I$(SRCROOT)/Project/ex2_services/Services
+INCLUDES		+= -I$(SRCROOT)/Project/ex2_services/ex2_demo_software
 
 #libcsp
 INCLUDES 		+= -I$(SRCROOT)/libcsp/include/csp
@@ -90,10 +101,10 @@ INCLUDES		+= -I$(SRCROOT)/libcsp/include
 INCLUDES 		+= -I$(SRCROOT)/libcsp/build/include
 INCLUDES 		+= -I$(SRCROOT)/libcsp/src
 
-# includeing .a fils
+# includeing .a files, ORDER MATTERS, bottom one gets linked first (libcsp)
 STATIC_OBJS  	+= $(SRCROOT)/Project/FileTransfer/CCSDS_FileDeliveryProtocol/Program/src/file_delivery_app.a
+STATIC_OBJS  	+= $(SRCROOT)/Project/ex2_services/servies.a
 STATIC_OBJS  	+= $(SRCROOT)/libcsp/build/libcsp.a
-
 
 # Generate OBJS names
 OBJS = $(patsubst %.c,%.o,$(C_FILES))
@@ -119,7 +130,7 @@ CWARNS += -Wunused-label
 CWARNS += -Wunused-parameter
 CWARNS += -Wunused-value
 CWARNS += -Wunused-variable
-CWARNS += -Wmissing-prototypes
+#CWARNS += -Wmissing-prototypes
 
 #CWARNS += -Wno-unused-function
 
@@ -146,6 +157,7 @@ CFLAGS += $(INCLUDES) $(CWARNS) -O2
 .PHONY : all
 all: setup
 	$(MAKE) -C $(SRCROOT)/Project/FileTransfer/CCSDS_FileDeliveryProtocol/Program/src/ lib
+	$(MAKE) -C $(SRCROOT)/Project/ex2_services/ lib
 	$(MAKE) SatelliteSim
 
 .PHONY : setup

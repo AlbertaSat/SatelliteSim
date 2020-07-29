@@ -2,9 +2,9 @@
 	path = libcsp
 	url = https://github.com/AlbertaSat/libcsp.git
 
-
-
-
+[submodule "Project/ex2_services"]
+	path = Project/ex2_services
+	url = https://github.com/AlbertaSat/ex2_services.git
 
 [submodule "Project/FileTransfer/CCSDS_FileDeliveryProtocol"]
 	path = Project/FileTransfer/CCSDS_FileDeliveryProtocol

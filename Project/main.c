@@ -1,18 +1,30 @@
 
 
 /* Standard includes. */
+
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <stdint.h>
+#include <string.h>
 #include "FreeRTOS.h"
 #include "task.h"
-
 #include "csp.h"
+#include "csp/csp.h"
 
 //Ftp tasks/functions
 #include "file_delivery_app.h"
 #include "requests.h"
 
+
+//ex2_services stuff
+
+#include <csp/interfaces/csp_if_zmqhub.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <service_utilities.h>
+#include "service_response.h"
+#include "services.h"
+#include "system.h"
 
 /* Priorities at which the tasks are created. */
 #define mainCHECK_TASK_PRIORITY (configMAX_PRIORITIES - 2)
@@ -35,9 +47,11 @@ unsigned long ulLine, const char * const pcFileName
 
 
 
+Service_Queues_t service_queues;
 int main(void)
 {
 	
+    
     uint8_t src_id = csp_get_address();
     if (src_id == 0) {
         printf("CSP ID: %d, initialzing csp addr 1\n", src_id);
@@ -50,8 +64,12 @@ int main(void)
     if (app == NULL) {
 		printf("couldn't start ftp\n");
     }
+    if (start_service_server() != SATR_OK || start_service_response() != SATR_OK) {
+        ex2_log("Initialization error\n");
+        return -1;
+    }
 
 	vTaskStartScheduler();
-
+    
 	return 0;
 }
