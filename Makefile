@@ -89,7 +89,6 @@ INCLUDES		+= -I$(SRCROOT)/Project/FileSystem
 INCLUDES		+= -I$(SRCROOT)/Project/FileTransfer/CCSDS_FileDeliveryProtocol/Program/include
 
 #Services app
-INCLUDES 		+= -I$(SRCROOT)/Project/ex2_services/
 INCLUDES 		+= -I$(SRCROOT)/Project/ex2_services/Platform/demo
 INCLUDES 		+= -I$(SRCROOT)/Project/ex2_services/Platform/demo/hal
 INCLUDES 		+= -I$(SRCROOT)/Project/ex2_services/Services
@@ -103,7 +102,7 @@ INCLUDES 		+= -I$(SRCROOT)/libcsp/src
 
 # includeing .a files, ORDER MATTERS, bottom one gets linked first (libcsp)
 STATIC_OBJS  	+= $(SRCROOT)/Project/FileTransfer/CCSDS_FileDeliveryProtocol/Program/src/file_delivery_app.a
-STATIC_OBJS  	+= $(SRCROOT)/Project/ex2_services/servies.a
+STATIC_OBJS  	+= $(SRCROOT)/Project/ex2_services/services.a
 STATIC_OBJS  	+= $(SRCROOT)/libcsp/build/libcsp.a
 
 # Generate OBJS names
@@ -131,7 +130,6 @@ CWARNS += -Wunused-parameter
 CWARNS += -Wunused-value
 CWARNS += -Wunused-variable
 #CWARNS += -Wmissing-prototypes
-
 #CWARNS += -Wno-unused-function
 
 #CFLAGS += -m32
